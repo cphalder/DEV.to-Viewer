@@ -1,9 +1,14 @@
 import "./basic-card.css";
+import defaultImgPath from "../../assets/dev-black_fixed.png";
 
 function BasicCard(props) {
   return (
     <div className="basic-card" id={props.id}>
-      <img src={props.imgPath} className="basic-card__img" alt={props.alt} />
+      <img
+        src={props.imgPath || defaultImgPath}
+        className="basic-card__img"
+        alt={props.alt}
+      />
       <div className="basic-card__body">
         {props.date && <span>{props.date}</span>}
         <h5>{props.title}</h5>
