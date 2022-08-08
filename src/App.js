@@ -1,6 +1,6 @@
 import BasicCard from "./components/BasicCard";
 import { useEffect, useState } from "react";
-import Search from "./components/Search/search";
+//import Search from "./components/Search/search";
 import "./index.css";
 import { TailSpin } from "react-loader-spinner";
 
@@ -9,9 +9,9 @@ export default function App() {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
 
-  let url = "https://dev.to/api/articles";
-
   useEffect(() => {
+    let url = "https://dev.to/api/articles";
+
     function getArticles() {
       fetch(url)
         //This operation returns a promise that could either resolve or reject
@@ -32,6 +32,7 @@ export default function App() {
           setLoading(false);
         });
     }
+
     getArticles();
   }, []);
 
