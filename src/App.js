@@ -1,6 +1,8 @@
 import BasicCard from "./components/BasicCard";
 import { useEffect, useState } from "react";
+import Search from "./components/Search/search";
 import "./index.css";
+import { TailSpin } from "react-loader-spinner";
 
 export default function App() {
   const [data, setData] = useState([]);
@@ -9,28 +11,27 @@ export default function App() {
 
   let url = "https://dev.to/api/articles";
 
-  function getArticles() {
-    fetch(url)
-      //This operation returns a promise that could either resolve or reject
-      // we must resolve the Response object to JSON format using the json() method
-      .then((response) => response.json())
-      // This also returns a promise and from there, we can resolve to get the actual data that we need
-      .then((articles) => {
-        console.log(articles);
-        setData(articles);
-        setError(null);
-      })
-      // In case the promise rejects, we will handle the error using the catch()
-      .catch((err) => {
-        setError(err.message);
-        setData(null);
-      })
-      .finally(() => {
-        setLoading(false);
-      });
-  }
-
   useEffect(() => {
+    function getArticles() {
+      fetch(url)
+        //This operation returns a promise that could either resolve or reject
+        // we must resolve the Response object to JSON format using the json() method
+        .then((response) => response.json())
+        // This also returns a promise and from there, we can resolve to get the actual data that we need
+        .then((articles) => {
+          console.log(articles);
+          setData(articles);
+          setError(null);
+        })
+        // In case the promise rejects, we will handle the error using the catch()
+        .catch((err) => {
+          setError(err.message);
+          setData(null);
+        })
+        .finally(() => {
+          setLoading(false);
+        });
+    }
     getArticles();
   }, []);
 
@@ -57,6 +58,16 @@ export default function App() {
   } else if (error) {
     return <div>There is a problem fetching the post data - {error}</div>;
   } else {
-    return "Loading...";
+    return (
+      <div className="loader">
+        <TailSpin
+          height="180"
+          width="180"
+          radius="9"
+          color="black"
+          ariaLabel="three-dots-loading"
+        />
+      </div>
+    );
   }
 }
