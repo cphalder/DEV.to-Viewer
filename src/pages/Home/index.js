@@ -3,7 +3,7 @@ import { useEffect, useState } from "react";
 // import Search from "./components/Search/search";
 import { TailSpin } from "react-loader-spinner";
 
-export default function Articles() {
+function Home() {
   const [data, setData] = useState([]);
   const [inputValue, setInputValue] = useState("");
   const [information, setInformation] = useState("");
@@ -105,3 +105,5 @@ export default function Articles() {
     );
   }
 }
+
+export default Home;
