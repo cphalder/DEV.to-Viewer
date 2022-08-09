@@ -12,10 +12,8 @@ export default function Articles() {
   const [error, setError] = useState(null);
 
   useEffect(() => {
-    // let url = "https://dev.to/api/articles";
-    // url = `https://dev.to/api/articles?tag=${inputValue}`;
-
     function getArticles() {
+      setLoading(true);
       fetch(url)
         //This operation returns a promise that could either resolve or reject
         // we must resolve the Response object to JSON format using the json() method
@@ -96,6 +94,14 @@ export default function Articles() {
           ariaLabel="three-dots-loading"
         />
       </div>
+      //   <div className="basic-card">
+      //     <img className="basic-card__img" />
+      //     <div className="basic-card__body">
+      //       <h5></h5>
+      //       <p className="basic-card__description"></p>
+      //       <a></a>
+      //     </div>
+      //   </div>
     );
   }
 }
