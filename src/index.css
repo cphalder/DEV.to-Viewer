@@ -8,7 +8,7 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
-.articles {
+.articles-wrapper {
   display: flex;
   justify-content: center;
   gap: 20px;
