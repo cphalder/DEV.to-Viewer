@@ -69,13 +69,13 @@ function Home() {
   if (!loading && !error) {
     return (
       <div className="Articles">
-        <h1>Articles</h1>
+        <h1>Looking for something specific? 🧐</h1>
         <div>
           <form onSubmit={handleSubmit}>
             <input type="search" onChange={updateInputValue} />
             <button type="submit">Search</button>
           </form>
-          <h3>Search for {inputValue}</h3>
+          {/* <h3>Search for {inputValue}</h3> */}
           <h4>{information}</h4>
         </div>
         <div className="articles-wrapper">{data && articlesArray}</div>
